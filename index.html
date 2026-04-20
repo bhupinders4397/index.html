@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Games Hub</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(135deg,#0f172a,#1e293b); color: white; }
-        header { padding: 20px; text-align: center; font-size: 26px; background: #020617; font-weight: bold; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #0f172a, #1e293b); color: white; }
+        header { padding: 30px; text-align: center; font-size: 32px; background: #020617; font-weight: bold; color: #ff4757; }
         
-        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 12px; background: #1e293b; }
-        nav input { padding: 10px; border-radius: 6px; border: none; width: 220px; outline: none; }
-        nav button { padding: 10px 15px; border: none; background: #334155; color: white; cursor: pointer; border-radius: 6px; transition: 0.3s; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 15px; background: #1e293b; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        nav input { padding: 10px; border-radius: 6px; border: none; width: 250px; outline: none; }
+        nav button { padding: 10px 20px; border: none; background: #334155; color: white; cursor: pointer; border-radius: 6px; transition: 0.3s; font-weight: bold; }
         nav button:hover { background: #ff4757; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 25px; max-width: 1200px; margin: auto; }
         
-        .card { background: #1e293b; padding: 12px; border-radius: 12px; text-align: center; height: 250px; display: flex; flex-direction: column; justify-content: center; }
-        .thumbnail { width: 100%; height: 180px; background: #0f172a; display: flex; align-items: center; justify-content: center; border-radius: 8px; cursor: pointer; border: 2px solid #334155; }
-        .thumbnail:hover { border-color: #ff4757; }
-        
-        iframe { width: 100%; height: 100%; border: none; border-radius: 8px; }
+        .card { background: #1e293b; padding: 15px; border-radius: 15px; text-align: center; border: 1px solid #334155; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #ff4757; }
+        .card h3 { margin: 0 0 15px 0; font-size: 18px; }
+        .play-btn { background: #ff4757; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        .play-btn:hover { background: #ff6b81; }
 
-        footer { text-align: center; padding: 25px 10px; background: rgba(0,0,0,0.7); margin-top: 30px; }
-        .powered { margin-top: 10px; font-size: 14px; color: #ccc; }
+        footer { text-align: center; padding: 40px 10px; background: rgba(0,0,0,0.4); margin-top: 30px; color: #94a3b8; }
+        .powered { margin-top: 10px; font-size: 14px; }
         .powered strong { color: #ff4757; }
 
-        #ageModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000; }
-        .modal-box { background: #1e293b; padding: 25px; border-radius: 10px; text-align: center; }
-        .modal-box button { margin: 10px; padding: 10px 20px; border: none; cursor: pointer; }
-        .yes { background: green; color: white; } .no { background: red; color: white; }
+        #ageModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-box { background: #1e293b; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #475569; }
+        .modal-box button { margin: 10px; padding: 12px 30px; border: none; cursor: pointer; font-size: 16px; border-radius: 6px; }
+        .yes { background: #22c55e; color: white; } .no { background: #ef4444; color: white; }
     </style>
 </head>
 <body>
@@ -61,16 +61,16 @@
 <script>
     let selectedCategory = "all";
     const games = [
-        {title:"Subway Surfers", category:"adventure", url:"https://www.crazygames.com/embed/subway-surfers"},
-        {title:"Temple Run 2", category:"adventure", url:"https://www.crazygames.com/embed/temple-run-2"},
-        {title:"Bullet Force", category:"action", url:"https://www.crazygames.com/embed/bullet-force"},
-        {title:"Shell Shockers", category:"action", url:"https://www.crazygames.com/embed/shellshockers"},
-        {title:"Drift Hunters", category:"action", url:"https://www.crazygames.com/embed/drift-hunters"},
-        {title:"Moto X3M", category:"action", url:"https://www.crazygames.com/embed/moto-x3m"},
-        {title:"Stickman Hook", category:"adventure", url:"https://www.crazygames.com/embed/stickman-hook"},
-        {title:"Fireboy & Watergirl", category:"adventure", url:"https://www.crazygames.com/embed/fireboy-and-watergirl-forest-temple"},
-        {title:"Zombs Royale", category:"action", url:"https://www.crazygames.com/embed/zombs-royale"},
-        {title:"Krunker", category:"action", url:"https://www.crazygames.com/embed/krunker-io"}
+        {title:"Subway Surfers", category:"adventure", url:"https://www.crazygames.com/game/subway-surfers"},
+        {title:"Temple Run 2", category:"adventure", url:"https://www.crazygames.com/game/temple-run-2"},
+        {title:"Bullet Force", category:"action", url:"https://www.crazygames.com/game/bullet-force"},
+        {title:"Shell Shockers", category:"action", url:"https://www.crazygames.com/game/shellshockers"},
+        {title:"Drift Hunters", category:"action", url:"https://www.crazygames.com/game/drift-hunters"},
+        {title:"Moto X3M", category:"action", url:"https://www.crazygames.com/game/moto-x3m"},
+        {title:"Stickman Hook", category:"adventure", url:"https://www.crazygames.com/game/stickman-hook"},
+        {title:"Fireboy & Watergirl", category:"adventure", url:"https://www.crazygames.com/game/fireboy-and-watergirl-forest-temple"},
+        {title:"Zombs Royale", category:"action", url:"https://www.crazygames.com/game/zombs-royale"},
+        {title:"Krunker", category:"action", url:"https://www.crazygames.com/game/krunker-io"}
     ];
 
     function applyFilters() {
@@ -78,7 +78,7 @@
         const container = document.getElementById("gameContainer");
         container.innerHTML = "";
 
-        games.forEach((game, index) => {
+        games.forEach((game) => {
             const matchCategory = selectedCategory === "all" || game.category === selectedCategory;
             const matchSearch = game.title.toLowerCase().includes(search);
 
@@ -87,27 +87,16 @@
                 card.className = "card";
                 card.innerHTML = `
                     <h3>${game.title}</h3>
-                    <div class="thumbnail" id="thumb-${index}" onclick="loadGame(${index}, '${game.url}')">
-                        <p>▶ Click to Play</p>
-                    </div>
+                    <button class="play-btn" onclick="window.open('${game.url}', '_blank')">▶ Play Now</button>
                 `;
                 container.appendChild(card);
             }
         });
     }
 
-    function loadGame(index, url) {
-        const thumb = document.getElementById(`thumb-${index}`);
-        thumb.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
-        thumb.style.cursor = "default";
-    }
+    function setCategory(cat) { selectedCategory = cat; applyFilters(); }
 
-    function setCategory(cat) {
-        selectedCategory = cat;
-        applyFilters();
-    }
-
-    // --- SECURITY THEATER (Unchanged per request) ---
+    // --- SECURITY THEATER ---
     function openAdult() { document.getElementById("ageModal").style.display = "flex"; }
     function enterAdult() { selectedCategory = "adult"; closeModal(); alert("Adult section unlocked."); }
     function closeModal() { document.getElementById("ageModal").style.display = "none"; }
